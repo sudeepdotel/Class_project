@@ -1,4 +1,4 @@
 
-Resturant100        Pizza               pizza               12.0                2023-12-03          
-Resturant101        pasta               pasta               23.0                2023-12-03          
-Resturant102        naan                indian              10.0                2023-12-03          
+Resturant100        pizza               hot                 15.0                2023-12-04          
+Resturant101        pasta               italian             12.0                2023-12-04          
+Resturant102        dosha               plain               19.0                2023-12-04          

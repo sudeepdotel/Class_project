@@ -20,10 +20,9 @@ public class Main {
         do {
             orderOperation.takeOrder(menus);
             System.out.println("Do you want to place another order? (1 for yes, 0 for no): ");
-            // Add logic to read user input and decide whether to continue taking orders
             int choice = scanner.nextInt();
             if (choice == 0) {
-                break;  // Exit the loop if the user enters 0
+                break;
             }
         } while (true);
 
