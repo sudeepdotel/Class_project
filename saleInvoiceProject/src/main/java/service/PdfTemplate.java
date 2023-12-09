@@ -8,6 +8,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import org.apache.pdfbox.pdmodel.graphics.shading.PDShading;
 
 
 import java.awt.*;
@@ -101,6 +102,12 @@ public class PdfTemplate {
         pdPageContentStream.drawImage(img,margin,yPosition,200,150);
 
 //        pdPageContentStream.newLineAtOffset(img.getWidth(), 0);
+    }
+
+    private static void addGreyBackground(PDPageContentStream pdPageContentStream, PDShading shade, float margin,float yPosition){
+
+
+
     }
 
     private static void addSeparatorLine(PDPageContentStream contentStream, float margin, float yPosition, PDPage page, Color color,float lineWidth) throws IOException {
