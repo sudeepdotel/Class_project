@@ -7,10 +7,12 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 
 import java.awt.*;
 
+import java.io.File;
 import java.io.IOException;
 
 public class PdfTemplate {
@@ -27,6 +29,7 @@ public class PdfTemplate {
 
             float margin = 50;
             float yStart = page.getMediaBox().getHeight() - margin;
+            System.out.println(yStart);
 
             // Sample header content variables
             String headerContent4 = "Weekytrips Tour Planner";
@@ -34,17 +37,34 @@ public class PdfTemplate {
             String headerContent6 = "Mobile: 9174100111";
             String headerContent7 = "Email: support@weekytrips.com";
 
+            //Load the logo to the header
+            PDImageXObject pdImageXObject = PDImageXObject.createFromFile("/Users/sudeep-macmini/IdeaProjects/root/saleInvoiceProject/src/main/resources/img/logo.png",document);
+            //Display the logo
+            addLogoImage(contentStream,pdImageXObject,15,yStart-150);
+
             // Display each line of the header content
-            displayHeaderContent(contentStream, headerContent4, margin, yStart - 60);
-            displayHeaderContent(contentStream, headerContent5, margin, yStart - 80);
-            displayHeaderContent(contentStream, headerContent6, margin, yStart - 100);
-            displayHeaderContent(contentStream, headerContent7, margin, yStart - 120);
+            displayHeaderContent(contentStream, headerContent4, 185, yStart - 60);
+            displayHeaderContent(contentStream, headerContent5, 185, yStart - 80);
+            displayHeaderContent(contentStream, headerContent6, 185, yStart - 100);
+            displayHeaderContent(contentStream, headerContent7, 185, yStart - 120);
 
             // Add bold red line to separate header and body
-            addSeparatorLine(contentStream, margin, yStart - 130,page);
+            addSeparatorLine(contentStream, margin, yStart - 130,page, Color.RED,3f);
 
             // Sample template for the body (replace with actual values)
             displayBodyContent(contentStream, margin, yStart - 150,invoice);
+            addSeparatorLine(contentStream, margin, yStart - 262,page, Color.RED,1f);
+
+            addSeparatorLine(contentStream, margin, yStart - 285,page, Color.RED,1f);
+
+            addSeparatorLine(contentStream, margin, yStart - 320,page, Color.RED,0.15f);
+
+            addSeparatorLine(contentStream, margin, yStart - 400,page, Color.RED,1f);
+            addSeparatorLine(contentStream, margin, yStart - 430,page, Color.RED,1f);
+
+            addSeparatorLine(contentStream, 290, 250,page, Color.RED,1f);
+            addSeparatorLine(contentStream, 290, 270,page, Color.RED,1f);
+
 
             contentStream.close();
 
@@ -75,10 +95,21 @@ public class PdfTemplate {
         contentStream.endText();
     }
 
-    private static void addSeparatorLine(PDPageContentStream contentStream, float margin, float yPosition, PDPage page) throws IOException {
+    private static void addLogoImage(PDPageContentStream pdPageContentStream, PDImageXObject img, float margin, float yPosition) throws IOException {
+
+
+        pdPageContentStream.drawImage(img,margin,yPosition,200,150);
+
+//        pdPageContentStream.newLineAtOffset(img.getWidth(), 0);
+    }
+
+    private static void addSeparatorLine(PDPageContentStream contentStream, float margin, float yPosition, PDPage page, Color color,float lineWidth) throws IOException {
         // Set the line color to red
-        contentStream.setStrokingColor(Color.RED);
-        contentStream.setLineWidth(2f);
+//        contentStream.setStrokingColor(Color.RED);
+//        contentStream.setLineWidth(2f); color , lineWidth
+
+        contentStream.setStrokingColor(color);
+        contentStream.setLineWidth(lineWidth);
 
         // Draw a bold red line
         contentStream.moveTo(margin, yPosition);
@@ -106,24 +137,49 @@ public class PdfTemplate {
         contentStream.showText("Due Date: " + inv.getDueDate());
 
         // Bill To
-        contentStream.newLineAtOffset(0, -12);
-        contentStream.showText("Bill To: " + "billTo");
+        contentStream.newLineAtOffset(-390, -19);
+        contentStream.showText("Bill To");
 
         // Firstname LastName
-        contentStream.newLineAtOffset(0, -12);
-        contentStream.showText("Firstname LastName: " + "firstNameLastName");
+        contentStream.newLineAtOffset(0, -20);
+        contentStream.showText("Firstname LastName" );
 
         // Address
-        contentStream.newLineAtOffset(0, -12);
+        contentStream.newLineAtOffset(0, -21);
         contentStream.showText("Address: " + "address");
 
         // Mobile
-        contentStream.newLineAtOffset(0, -12);
+        contentStream.newLineAtOffset(0,-22 );
         contentStream.showText("Mobile: " + "mobile");
 
         // State
-        contentStream.newLineAtOffset(0, -12);
+        contentStream.newLineAtOffset(0, -23);
         contentStream.showText("State: " + "state");
+
+        //Service
+        contentStream.setFont(PDType1Font.HELVETICA, 12);
+        contentStream.newLineAtOffset(0,-24.5f);
+        contentStream.showText("SERVICES");
+
+        //QTY
+        contentStream.setFont(PDType1Font.HELVETICA,12);
+        contentStream.newLineAtOffset(205,0);
+        contentStream.showText("QTY");
+
+        //RATE
+        contentStream.setFont(PDType1Font.HELVETICA,12);
+        contentStream.newLineAtOffset(68,0);
+        contentStream.showText("RATE");
+
+        //DISC
+        contentStream.setFont(PDType1Font.HELVETICA,12);
+        contentStream.newLineAtOffset(78,0);
+        contentStream.showText("DISC");
+
+        //AMOUNT
+        contentStream.setFont(PDType1Font.HELVETICA,13);
+        contentStream.newLineAtOffset(88,0);
+        contentStream.showText("AMOUNT");
 
         contentStream.endText();
     }
