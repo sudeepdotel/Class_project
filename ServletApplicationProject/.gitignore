@@ -12,6 +12,7 @@ target/
 *.iml
 *.ipr
 !**/src/main/resources/db.properties
+ServletApplicationProject/src/main/resources/db.properties
 
 ### Eclipse ###
 .apt_generated
