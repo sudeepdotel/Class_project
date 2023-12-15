@@ -9,51 +9,51 @@ public class Order {
     private double totalPrice;
     private double discount;
 
-    public int getOrderId() {
+    public int getOrderId ( ) {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId ( int orderId ) {
         this.orderId = orderId;
     }
 
-    public String getProductName() {
+    public String getProductName ( ) {
         return productName;
     }
 
-    public void setProductName(String productName) {
+    public void setProductName ( String productName ) {
         this.productName = productName;
     }
 
-    public int getQty() {
+    public int getQty ( ) {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty ( int qty ) {
         this.qty = qty;
     }
 
-    public double getPrice() {
+    public double getPrice ( ) {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice ( double price ) {
         this.price = price;
     }
 
-    public double getTotalPrice() {
+    public double getTotalPrice ( ) {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice ( double totalPrice ) {
         this.totalPrice = totalPrice;
     }
 
-    public double getDiscount() {
+    public double getDiscount ( ) {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount ( double discount ) {
         this.discount = discount;
     }
 }

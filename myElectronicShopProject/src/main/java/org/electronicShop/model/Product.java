@@ -8,43 +8,43 @@ public class Product {
     private double price;
     private int qtyAvailable;
 
-    public int getProductId() {
+    public int getProductId ( ) {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId ( int productId ) {
         this.productId = productId;
     }
 
-    public String getName() {
+    public String getName ( ) {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName ( String name ) {
         this.name = name;
     }
 
-    public String getDescription() {
+    public String getDescription ( ) {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription ( String description ) {
         this.description = description;
     }
 
-    public double getPrice() {
+    public double getPrice ( ) {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice ( double price ) {
         this.price = price;
     }
 
-    public int getQtyAvailable() {
+    public int getQtyAvailable ( ) {
         return qtyAvailable;
     }
 
-    public void setQtyAvailable(int qtyAvailable) {
+    public void setQtyAvailable ( int qtyAvailable ) {
         this.qtyAvailable = qtyAvailable;
     }
 }
