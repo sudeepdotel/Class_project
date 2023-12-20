@@ -64,7 +64,6 @@ public class PdfGenerator {
             e.printStackTrace();
         }
     }
-
     private static float addHeader(PDPageContentStream contentStream, String[] header, float yStart, float tableWidth) throws IOException {
         contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
         float margin = 50;
@@ -77,18 +76,11 @@ public class PdfGenerator {
         }
         contentStream.endText();
 
-//        float yPosition = yStart - 20;
-//        contentStream.setLineWidth(1f);
-//        contentStream.moveTo(margin, yPosition);
-//        contentStream.lineTo(margin + tableWidth, yPosition);
-
 
         // Update yStart for the next operation
         yStart -= 20; // Adjust as needed
         return yStart;
     }
-
-
     private static float addContent(PDPageContentStream contentStream, Order order, float yStart) throws IOException {
         float margin = 50;
         float tableWidth = 500;
@@ -117,7 +109,6 @@ public class PdfGenerator {
 
         return yStart;
     }
-
     private static void addSubtotal(PDDocument document, double subtotal, float yStart, float tableWidth, PDPageContentStream contentStream) throws IOException {
         float margin = 50;
 
@@ -133,11 +124,10 @@ public class PdfGenerator {
         // Add Subtotal text
         contentStream.beginText();
         contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
-        contentStream.newLineAtOffset(margin + tableWidth / 2, yStart - 10);
+        contentStream.newLineAtOffset(margin + tableWidth/1.40f, yStart - 10);
         contentStream.showText("Subtotal: $" + String.format("%.2f", subtotal));
         contentStream.endText();
     }
-
     private static String getCurrentDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return LocalDateTime.now().format(formatter);

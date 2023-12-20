@@ -27,6 +27,9 @@ public class LoginServlet extends HttpServlet {
 
         Customer authenticatedCustomer = loginService.authenticateUser(username, password);
 
+
+
+
         if (authenticatedCustomer != null) {
             // Add logic for successful login, e.g., setting session attributes
             HttpSession session = request.getSession();

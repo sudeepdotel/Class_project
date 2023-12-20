@@ -13,16 +13,13 @@ public class CustomerService {
         Connection conn = DatabaseUtils.getConnection();
         this.customerDAO = new CustomerDAO(conn);
     }
-
     public Customer registerCustomer(String username, String password, String email, String fullName) {
         Customer newCustomer = new Customer(username, password, email, fullName);
         return customerDAO.insertCustomer(newCustomer);
     }
-
     public Customer getCustomerByUsername(String username) {
         return customerDAO.getCustomerByUsername(username);
     }
-
     public int getCustomerId( ){
         return customerDAO.getCustomerById (  ).getCustomerId ( );
 

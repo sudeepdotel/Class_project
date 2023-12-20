@@ -29,7 +29,7 @@ public class Order {
     }
 
     // Constructor with orderId and orderDate (for retrieval)
-    public Order(int orderId, int customerId, String productName, int quantity, double pricePerUnit, double totalPrice, Timestamp orderDate) {
+    public Order(int orderId, int customerId,int productId, String productName, int quantity, double pricePerUnit, double totalPrice, Timestamp orderDate) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.productName = productName;

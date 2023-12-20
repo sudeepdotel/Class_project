@@ -22,14 +22,14 @@ public class OrderService {
         this.productService = new ProductService ();
     }
 
-    public void saveOrderPlacedByCustomer(Order order) {
-        order = orderDAO.placeOrder(order);
-
-        // Update product quantity by subtracting the ordered quantity
-        productDAO.updateProductQuantity(order.getProductName(), order.getQuantity());
-
-        System.out.println("Order placed successfully. Order ID: " + order.getOrderId());
-    }
+//    public void saveOrderPlacedByCustomer(Order order) {
+//        order = orderDAO.saveOrderPlacedBYCustomer (order);
+//
+//        // Update product quantity by subtracting the ordered quantity
+//        productDAO.updateProductQuantity(order.getProductName(), order.getQuantity());
+//
+//        System.out.println("Order placed successfully. Order ID: " + order.getOrderId());
+//    }
 
     public int getProductIdByName(String productName) {
         Product product = productService.getProductByName(productName);
@@ -38,74 +38,61 @@ public class OrderService {
         }
         return 0; // Default to 0 if product is not found (you should handle this case appropriately)
     }
-
     public List<Order> getOrdersByCustomerId(int customerId) {
         return orderDAO.getOrdersByCustomerId(customerId);
     }
 
-
     // Add this method to your OrderService class
     public Order placeOrder(int customerId, String productName, int quantity) {
-        // Assuming you have logic to calculate price and total price based on the product name
+
         double pricePerUnit = calculatePricePerUnit(productName);
         double totalPrice = calculateTotalPrice(quantity, pricePerUnit);
-
         // Check if the product is available in sufficient quantity
         if (!isProductAvailable(productName, quantity)) {
             // Product not available in sufficient quantity
             throw new RuntimeException("Product not available in sufficient quantity.");
         }
-
         int productId = getProductIdByName ( productName );
 
         Order newOrder = new Order(customerId,productId, productName, quantity, pricePerUnit, totalPrice);
-
 
         // Set the fetched product_id in the order
         newOrder.setProductId(productId);
 
         // save the order to the database
-        newOrder = orderDAO.placeOrder ( newOrder );
+        newOrder = orderDAO.saveOrderPlacedBYCustomer ( newOrder );
 
         // Update product quantity
         updateProductQuantity(productName, quantity);
 
         return newOrder;
     }
-
     private double calculateTotalPrice ( int quantity, double pricePerUnit ) {
 
         return pricePerUnit * quantity;
     }
-
     // Add any additional methods or logic as needed
     private double calculatePricePerUnit(String productName) {
         Product product = productService.getProductByName(productName);
         if (product != null) {
-            return product.getPrice(); // Assuming getPrice() returns the actual price from the database
+            return product.getPrice(); // get the actual price from the db
         }
         return 0.0; // Default to 0.0 if product is not found (you should handle this case appropriately)
     }
-
     // Modify this method to retrieve the actual available quantity from the database
     private boolean isProductAvailable(String productName, int orderQty) {
         Product product = productService.getProductByName(productName);
         return product != null && product.getQtyAvailable() >= orderQty;
     }
-
-
-
-
     // Add this method to your OrderService class
     private void updateProductQuantity(String productName, int orderQty) {
         Product product = productService.getProductByName(productName);
         if (product != null) {
             int newQtyAvailable = product.getQtyAvailable() - orderQty;
-            productService.updateProductQuantity(productName, newQtyAvailable);
+//            productService.updateProductQuantity(productName, newQtyAvailable);
         }
+
     }
-
-
     public Order getOrderById ( int orderIdFromRequest ) {
         //TODO implement for pdf generator
         return null;

@@ -28,8 +28,7 @@
     </ul>
 </nav>
         <!-- Add more navigation items as needed -->
-    </ul>
-</nav>
+
 
 <section id="main-content">
     <h2>Product Registration Form</h2>
@@ -47,6 +46,23 @@
         <input type="number" id="quantityAvailable" name="quantityAvailable" required><br>
 
         <input type="submit" value="Register Product">
+    </form>
+
+    <form action="ProductUpdate" method="post">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required><br>
+
+        <label for="productQuantity">Add Existing Product's Quantity:</label>
+        <input type="number" id="productQuantity" name="productQuantity" required><br>
+
+        <input type="submit" value="Add Product Quantity">
+    </form>
+
+    <form action="DeleteProduct" method="post">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required><br>
+
+        <input type="submit" value="Delete Product ">
     </form>
 </section>
 

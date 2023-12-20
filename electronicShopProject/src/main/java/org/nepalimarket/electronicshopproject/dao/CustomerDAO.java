@@ -9,11 +9,9 @@ import java.sql.SQLException;
 
 public class CustomerDAO {
     private final Connection conn;
-
     public CustomerDAO(Connection conn) {
         this.conn = conn;
     }
-
     public Customer insertCustomer(Customer customer) {
         String sql = "INSERT INTO customers (username, password, email, full_name) VALUES (?, ?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -35,7 +33,6 @@ public class CustomerDAO {
         }
         return customer;
     }
-
     public Customer getCustomerByUsername(String username) {
         String sql = "SELECT * FROM customers WHERE username=?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -49,7 +46,6 @@ public class CustomerDAO {
         }
         return null;
     }
-
     private Customer extractCustomerFromResultSet(ResultSet rs) throws SQLException {
         int customerId = rs.getInt("customer_id");
         String username = rs.getString("username");
@@ -58,7 +54,6 @@ public class CustomerDAO {
         String fullName = rs.getString("full_name");
         return new Customer(customerId, username, password, email, fullName);
     }
-
     public Customer getCustomerByUsernameAndPassword(String username, String password) {
         String sql = "SELECT * FROM customers WHERE username=? AND password=?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -76,7 +71,6 @@ public class CustomerDAO {
 
         return null;
     }
-
     public Customer getCustomerById( ) {
         String sql = "SELECT * FROM customers WHERE customer_id=?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -90,6 +84,5 @@ public class CustomerDAO {
         }
         return null;
     }
-
 
 }

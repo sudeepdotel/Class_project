@@ -18,14 +18,10 @@ import java.util.List;
 @WebServlet("/OrderServlet")
 public class OrderServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
     private final OrderService orderService;
-
     public OrderServlet() throws Exception {
         this.orderService = new OrderService();
     }
-
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
@@ -37,10 +33,8 @@ public class OrderServlet extends HttpServlet {
             if (customerId != null) {
                 String productName = request.getParameter("productName");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-
                 // Place the order
                 Order placedOrder = orderService.placeOrder(customerId, productName, quantity);
-
                 // Retrieve all orders for the customer
                 List<Order> customerOrders = orderService.getOrdersByCustomerId(customerId);
 
@@ -58,7 +52,7 @@ public class OrderServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace(); // Log the exception for debugging
             // Handle the exception and show an error page or message to the user
-            response.getWriter().println("<p>Error processing the order. Please try again.</p>");
+            response.getWriter().println("<p>Product not available in sufficient quantity. Please try again.</p>");
         }
     }
 
