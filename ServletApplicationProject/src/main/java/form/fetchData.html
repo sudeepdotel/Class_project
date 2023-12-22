@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Student Data</title>
+  <!-- Include any additional styling if needed -->
+</head>
+<body>
+
+<h2>Fetch Student Data</h2>
+
+<button onclick="fetchData()">Fetch Data</button>
+
+<table border="1" id="studentTable">
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+  </tr>
+  <!-- Data will be dynamically inserted here -->
+</table>
+
+<script>
+  function fetchData() {
+    fetch('http://localhost:8081/ServletApplicationProject_war/insert')
+            .then(response => response.json())
+            .then(data => {
+              const table = document.getElementById('studentTable');
+              // Clear existing rows
+              table.innerHTML = '<tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Age</th><th>Gender</th></tr>';
+              // Insert new rows
+              data.forEach(student => {
+                const row = table.insertRow(-1);
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+                const cell4 = row.insertCell(3);
+                const cell5 = row.insertCell(4);
+
+                cell1.innerHTML = student.id;
+                cell2.innerHTML = student.fName;
+                cell3.innerHTML = student.lName;
+                cell4.innerHTML = student.age;
+                cell5.innerHTML = student.gender;
+              });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+  }
+</script>
+
+</body>
+</html>
