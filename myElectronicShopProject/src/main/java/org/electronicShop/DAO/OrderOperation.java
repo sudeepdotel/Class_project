@@ -5,6 +5,10 @@ import org.electronicShop.Service.PdfService;
 import org.electronicShop.Service.ProductService;
 import org.electronicShop.model.Order;
 import org.electronicShop.model.Product;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -24,6 +28,7 @@ public class OrderOperation {
         Product product = productService.searchProductByName ( productName );
 
         if (product == null) {
+
             System.out.println ( "Product not found." );
             return;
         }
@@ -54,7 +59,62 @@ public class OrderOperation {
         System.out.println ( "Order placed successfully." );
     }
 
-    public void generatePDF ( Scanner scanner, OrderService orderService, PdfService pdfService ) {
-        pdfService.generatePDF ( scanner, orderService );
+//    public void generatePDF ( Scanner scanner, OrderService orderService, PdfService pdfService ) {
+//        pdfService.generatePDF ( scanner, orderService );
+//    }
+
+    public void placeOrderFromRequest(HttpServletRequest request, ProductService productService, OrderService orderService) {
+        String doneOrderFlag = request.getParameter("doneOrder");
+
+        while (doneOrderFlag == null || !doneOrderFlag.equalsIgnoreCase("exit")) {
+            System.out.print("Enter product name to place an order: ");
+            String productName = request.getParameter("productName");
+            Product product = productService.searchProductByName(productName);
+
+            if (product == null) {
+                System.out.println("Product not found.");
+                return;
+            }
+
+            if (product.getQtyAvailable() == 0) {
+                System.out.println("Product is out of stock. Cannot place an order.");
+                return;
+            }
+
+            System.out.print("Enter quantity: ");
+            int quantity;
+
+            try {
+                quantity = Integer.parseInt(request.getParameter("qty"));
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid quantity. Please enter a valid quantity.");
+                return;
+            }
+
+            if (quantity <= 0 || quantity > product.getQtyAvailable()) {
+                System.out.println("Invalid quantity. Please enter a valid quantity.");
+                return;
+            }
+
+            Order order = new Order();
+            // Assuming orderId is generated in the database
+            // Replace with your logic to get the next available orderId
+
+
+            order.setProductName(product.getName());
+            order.setQty(quantity);
+            order.setPrice(product.getPrice());
+            order.setDiscount(10.0);
+            order.setTotalPrice(order.getQty() * order.getPrice() - order.getDiscount());
+            orderService.saveOrderPlacedBYCustomer(order);
+            System.out.println("Order placed successfully.");
+
+            // Prompt for the next order or exit
+            System.out.print("Do you want to place another order? (Type 'exit' to finish): ");
+            doneOrderFlag = request.getParameter("doneOrder");
+        }
     }
+
+
+
 }

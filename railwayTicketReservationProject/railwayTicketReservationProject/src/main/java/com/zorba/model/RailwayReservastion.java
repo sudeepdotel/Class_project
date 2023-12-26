@@ -57,4 +57,15 @@ public class RailwayReservastion {
         isSeniorCitizen = seniorCitizen;
     }
 
+    @Override
+    public String toString ( ) {
+        return "RailwayReservation{" +
+                "passengerName='" + passengerName + '\'' +
+                ", passengerAge=" + passengerAge +
+                ", chosenSeat='" + chosenSeat + '\'' +
+                ", typeOfReservation='" + typeOfReservation + '\'' +
+                ", amountPaid=" + amountPaid +
+                ", isSeniorCitizen=" + isSeniorCitizen +
+                '}';
+    }
 }

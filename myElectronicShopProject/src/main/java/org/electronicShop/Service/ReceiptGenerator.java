@@ -35,8 +35,11 @@ public class ReceiptGenerator {
             addContent ( contentStream, order );
             contentStream.close ( );
 
-            document.save ( "/Users/sudeep-macmini/IdeaProjects/root/myElectronicShopProject/src/main/resources/receipt.pdf" );
-            document.save ( outputStream );
+
+                document.save ( "/Users/sudeep-macmini/IdeaProjects/root/myElectronicShopProject/src/main/resources/receipt.pdf" );
+                document.save ( outputStream );
+
+
             document.close ( );
             System.out.println ( "Receipt generated successfully." );
         } catch (IOException e) {

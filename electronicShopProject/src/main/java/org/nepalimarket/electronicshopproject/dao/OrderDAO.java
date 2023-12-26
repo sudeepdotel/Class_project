@@ -44,7 +44,8 @@ public class OrderDAO {
     }
 
     public List<Order> getOrdersByCustomerId(int customerId) {
-        List<Order> orders = new ArrayList<>();
+        ArrayList<Order> orders = new ArrayList<>();
+
         String sql = "SELECT * FROM orders WHERE customer_id=?";
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, customerId);

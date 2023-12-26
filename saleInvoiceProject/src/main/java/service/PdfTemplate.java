@@ -101,7 +101,6 @@ public class PdfTemplate {
 
         pdPageContentStream.drawImage(img,margin,yPosition,200,150);
 
-//        pdPageContentStream.newLineAtOffset(img.getWidth(), 0);
     }
 
     private static void addGreyBackground(PDPageContentStream pdPageContentStream, PDShading shade, float margin,float yPosition){
@@ -112,8 +111,6 @@ public class PdfTemplate {
 
     private static void addSeparatorLine(PDPageContentStream contentStream, float margin, float yPosition, PDPage page, Color color,float lineWidth) throws IOException {
         // Set the line color to red
-//        contentStream.setStrokingColor(Color.RED);
-//        contentStream.setLineWidth(2f); color , lineWidth
 
         contentStream.setStrokingColor(color);
         contentStream.setLineWidth(lineWidth);

@@ -9,7 +9,7 @@ public class DbConnection {
         Connection conn = null;
         try {
             Class.forName ( "com.mysql.cj.jdbc.Driver" );
-            conn = DriverManager.getConnection ( "jdbc:mysql://127.0.0.1:3306/product_order", "root", "******" );
+            conn = DriverManager.getConnection ( "jdbc:mysql://127.0.0.1:3306/product_order", "root", "Coding@2211" );
         } catch (Exception e) {
             e.getMessage ( );
         }

@@ -6,6 +6,9 @@ import org.hibernate.Transaction;
 import org.nepalimarket.fullstackproject.model.Student;
 import org.nepalimarket.fullstackproject.util.HibernateConnection;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StudentDao {
 
     private final SessionFactory sessionFactory;
@@ -15,7 +18,7 @@ public class StudentDao {
     }
 
     public void saveStudent( Student student){
-        Session session = HibernateConnection.getSessionFactory ( ).openSession ( );
+        Session session = HibernateConnection.getSessionFactory ().openSession ( );
 
         Transaction transaction = null;
 
@@ -29,7 +32,31 @@ public class StudentDao {
                 transaction.rollback ();
             }
             System.err.println ("Error message :: " + e.getMessage () );
+        }finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
     }
+
+    public static List<Student> getAllStudentInfo (   ) {
+
+        Session session = HibernateConnection.getSessionFactory ( ).openSession ( );
+
+        List<Student> students = new ArrayList<> ();
+
+        try{
+            students = session.createQuery ( "FROM Student", Student.class ).getResultList ();
+
+        }catch (Exception e ){
+            System.err.println ("Error message :: " + e.getMessage () );
+        }finally {
+            if (session != null) {
+                session.close();
+            }
+        }return students;
+    }
+
+
 }

@@ -28,6 +28,7 @@ public class OrderService {
 
             int affectedRows = ps.executeUpdate ( );
             if (affectedRows == 0) {
+
                 throw new SQLException ( "Placing order failed, no rows affected." );
             }
             try (ResultSet generatedKeys = ps.getGeneratedKeys ( )) {

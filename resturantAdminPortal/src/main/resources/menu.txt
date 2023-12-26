@@ -2,3 +2,9 @@
 Resturant100        pizza               hot                 15.0                2023-12-04          
 Resturant101        pasta               italian             12.0                2023-12-04          
 Resturant102        dosha               plain               19.0                2023-12-04          
+Resturant100        pizza               hot                 12.0                2023-12-15          
+Resturant101        dosha               indian              10.0                2023-12-15          
+Resturant102        pasta               italian             13.0                2023-12-15          
+Resturant100        dosha               tasty               12.0                2023-12-19          
+Resturant101        bread               soft                10.0                2023-12-19          
+Resturant102        paneer              delicious           15.0                2023-12-19          

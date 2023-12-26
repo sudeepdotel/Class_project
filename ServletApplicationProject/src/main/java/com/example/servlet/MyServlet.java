@@ -20,7 +20,7 @@ import java.sql.ResultSet;
     public void init() {
         System.out.println("Servlet initiation !!");
     }
-
+    @Override
     protected void doPost(HttpServletRequest httpServletRequest,
                           HttpServletResponse httpServletResponse) {
         try {
@@ -34,6 +34,7 @@ import java.sql.ResultSet;
             String lastName = httpServletRequest.getParameter("lName");
             String age = httpServletRequest.getParameter("age");
             String gender = httpServletRequest.getParameter("gender");
+
 
             // Set parameters in the prepared statement
             preparedStatement.setString(1, firstName);

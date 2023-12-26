@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionByProperties {
+
+    public static void main ( String[] args ) throws SQLException, ClassNotFoundException {
+        initializeDatabase ();
+        System.out.println ("successfully connected" );
+    }
     public static Connection initializeDatabase() throws SQLException, ClassNotFoundException {
         try (InputStream input = ConnectionByProperties.class.getClassLoader().getResourceAsStream("db.properties")) {
             Properties prop = new Properties();

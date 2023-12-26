@@ -4,10 +4,13 @@ import model.Menu;
 import operation.MenuOperation;
 import operation.OrderOperation;
 import operation.ReceiptGenerator;
+import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
 public class Main {
+
+    static Logger log = Logger.getLogger ( Main.class.getName () );
     public static void main(String[] args) {
         System.out.println("Welcome to Zorba Restaurant portal");
         OrderOperation orderOperation = new OrderOperation();
@@ -28,5 +31,6 @@ public class Main {
 
         // Generate receipts based on the orders
         ReceiptGenerator.generateReceipt();
+        log.info ( orderOperation );
     }
 }

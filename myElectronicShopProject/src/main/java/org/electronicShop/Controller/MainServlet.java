@@ -25,6 +25,7 @@ public class MainServlet extends HttpServlet {
             response.setContentType ( "application/pdf" );
             response.setHeader ( "Content-Disposition", "inline; filename=receipt.pdf" );
             try {
+
                 ReceiptGenerator.generateReceipt ( order, response.getOutputStream ( ) );
             } catch (Exception e) {
                 e.printStackTrace ( );

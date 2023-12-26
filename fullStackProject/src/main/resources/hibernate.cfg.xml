@@ -1,4 +1,3 @@
-
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD//EN"
@@ -37,5 +36,6 @@
         <!--Only does xml configuration of all hibernate mapping file-->
         <!--<mapping resource="mapping_file/employee.hbm.xml"/>
         <mapping resource="mapping_file/department.hbm.xml"/>-->
+
     </session-factory>
 </hibernate-configuration>

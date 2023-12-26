@@ -18,7 +18,7 @@ public class ExcelFileWriter {
 
     private static final String FILE_PATH = "/Users/sudeep-macmini/IdeaProjects/root/fullStackProject/src/main/resources/files/studentData.xlsx";
 
-    public static void writeStudentDataToExcel( Student student) {
+    public static void writeStudentDataToExcel( List<Student> students) {
 
 
         try (Workbook workbook = new XSSFWorkbook ()) {
@@ -35,7 +35,7 @@ public class ExcelFileWriter {
 
             // Populate data rows
             int rowNum = 1;
-//            for (Student student : students) {
+            for (Student student : students) {
                 Row row = sheet.createRow(rowNum++);
                 row.createCell(0).setCellValue(student.getStudentId());
                 row.createCell(1).setCellValue(student.getFirstName());
@@ -43,7 +43,7 @@ public class ExcelFileWriter {
                 row.createCell(3).setCellValue(student.getAge());
                 row.createCell(4).setCellValue(student.getAddress());
                 row.createCell(5).setCellValue(student.getStudentDepartment());
-           // }
+            }
 
             // Write the workbook to a file
             try (FileOutputStream fileOut = new FileOutputStream(FILE_PATH)) {

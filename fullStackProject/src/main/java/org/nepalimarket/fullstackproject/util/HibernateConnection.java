@@ -6,16 +6,18 @@ import org.hibernate.cfg.Configuration;
 import org.nepalimarket.fullstackproject.model.Student;
 import org.nepalimarket.fullstackproject.model.StudentResult;
 
+
 public class HibernateConnection {
 
     @Getter
-    public static final SessionFactory sessionFactory = null;
-    public static SessionFactory buildSessionFactory(){
+    public static final SessionFactory sessionFactory ;
 
+    static {
         try {
-            return new Configuration ()
+
+            sessionFactory = new Configuration()
                     .configure("hibernate.cfg.xml")
-                    .addAnnotatedClass( Student.class)
+                    .addAnnotatedClass ( Student.class )
                     .addAnnotatedClass ( StudentResult.class )
                     .buildSessionFactory();
 

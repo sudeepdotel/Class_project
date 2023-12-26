@@ -23,6 +23,8 @@ public class HomePageServlet extends HttpServlet {
         out.println ( "  Order Number: <input type=\"text\" name=\"orderId\" required>" );
         out.println ( "  <input type=\"submit\" value=\"Get Receipt\">" );
         out.println ( "</form>" );
+        out.println("<p>Click the link below to take a new order:</p>");
+        out.println("<a href=\"/myElectronicShopProject_war_exploded/takeOrder.html\">Take Order</a>");
         out.println ( "</body></html>" );
     }
 }
