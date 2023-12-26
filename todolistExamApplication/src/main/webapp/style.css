@@ -1,0 +1,61 @@
+
+body {
+    background-color: #87CEEB; /* SkyBlue background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"],
+.nav-links a {
+    background-color: #4c74af;
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: inherit;
+    align-items: center;
+}

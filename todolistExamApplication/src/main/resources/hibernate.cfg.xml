@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--JDBC connection pool settings-->
+        <property name="connection.pool_size">5</property>
+
+        <!-- set mysql driver class-->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <!--set JDBC url-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/todolistDb</property>
+
+        <!-- set the jdbc username-->
+        <property name="hibernate.connection.username">root</property>
+
+        <!-- set the jdbc password -->
+        <property name="hibernate.connection.password">Coding@2211</property>
+
+        <!-- Dialect help us to convert HQL (ORM) to corresponding SQL-->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!--All the executed sql scripts will be visible in console-->
+        <property name="show_sql">true</property>
+
+        <!--Create : Every time on start of application it will drop all the existing table from mentioned schema
+           Update: Once a table created will never drop even at the time of start of application
+        -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- set the current session context -->
+        <property name="current_session_context_class">thread</property>
+
+        <!--Only does xml configuration of all hibernate mapping file-->
+        <!--<mapping resource="mapping_file/employee.hbm.xml"/>
+        <mapping resource="mapping_file/department.hbm.xml"/>-->
+
+    </session-factory>
+</hibernate-configuration>
