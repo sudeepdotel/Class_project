@@ -1,0 +1,71 @@
+public Student getStudentByName(String name) {
+
+		Student student = new Student();
+		try {
+			Connection conn = DBConnection.getConnection();
+			String sql = "select * from registration where name = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+
+			//Result set as we may have multiple objects return
+			ResultSet rs = ps.executeQuery();
+
+			//iteration
+			if (rs.next()) {
+				///setting object values from resultset
+				student.setName(rs.getString(1));
+				student.setAddress(rs.getString(2));
+				student.setMobile(rs.getString(3));
+				student.setEmail(rs.getString(4));
+				student.setPassword(rs.getString(5));
+				student.setcPassword(rs.getString(6));
+
+			}
+			conn.close();
+
+
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return student;
+	}
+
+	public List<Student> getAllStudentDetails(){
+
+    		//declare a list object
+    		List<Student> stdList = new ArrayList<Student>();
+
+    		try {
+    			Connection conn = DBConnection.getConnection();
+    			String sql = "select * from registration"; // 3 records
+    			PreparedStatement ps = conn.prepareStatement(sql);
+
+    			ResultSet rs = ps.executeQuery();
+
+    			while(rs.next()) {
+    				Student  student = new Student();
+    				///setting object values from resultset
+    				student.setName(rs.getString(1));
+    				student.setAddress(rs.getString(2));
+    				student.setMobile(rs.getString(3));
+    				student.setEmail(rs.getString(4));
+    				student.setPassword(rs.getString(5));
+    				student.setcPassword(rs.getString(6));
+
+    				stdList.add(student);
+
+    			}
+    			conn.close();
+
+    		}catch(Exception e) {
+    			e.printStackTrace();
+    		}
+
+    		return stdList;
+    	}
+    List<Student> ls = dao.getAllStudentDetails();
+    		for (Student std : ls) {
+    			System.out.println(std.getEmail() + " "+ std.getMobile());
+    		}

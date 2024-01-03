@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="student-form.html">Signup</a>
+
+    <div class="search-container">
+        <form action="http://localhost:8080/crudApp_war/studentName" method="get">
+            <input type="text" placeholder="Search by Name" name="search">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+</nav>
+
+<h1>Login</h1>
+<form action="http://localhost:8080/crudApp_war/login" method="post">
+    <label for="userName">Username:</label>
+    <input type="text" name="userName" required><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br>
+    <input type="submit" value="Login">
+</form>
+<br>
+<a href="student-list.html">Back to List</a>
+
+</body>
+</html>

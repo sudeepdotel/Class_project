@@ -24,7 +24,7 @@ public class ExpensesServlet extends HttpServlet {
             throws ServletException, IOException {
 
 
-        String expenseName = request.getParameter("expenseName");
+        String expenseName = request.getParameter("expenseNam");
         String dateTime = request.getParameter ( "expenseDateTime" ) ;
         LocalDateTime dateTime1 = LocalDateTime.parse ( dateTime );
 

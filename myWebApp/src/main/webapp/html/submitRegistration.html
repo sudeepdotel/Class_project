@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Submit Registration</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <ul>
+    <li><a href="http://localhost:8085/myWebApp_war/html/index.html">Home</a></li>
+    <li><a href="http://localhost:8085/myWebApp_war/html/signUp.html">Sign Up</a></li>
+    <li><a href="http://localhost:8085/myWebApp_war/student-directory">Student Directory</a></li>
+    <li><a href="http://localhost:8085/myWebApp_war/html/submitRegistration.html">Submit Registration</a></li>
+    <li><a href="http://localhost:8085/myWebApp_war/html/signIn.html">Sign In</a></li> <!-- New Sign In Link -->
+  </ul>
+</nav>
+
+<!-- Form container -->
+<div class="form-container">
+  <form name="registration" method="post" action="http://localhost:8085/myWebApp_war/student-directory">
+
+    <h2>Registration Form</h2>
+    <!-- First Name -->
+    <label for="fName">First Name:</label>
+    <input type="text" id="fName" name="fName">
+    <br>
+    <!-- Last Name -->
+    <label for="lName">Last Name:</label>
+    <input type="text" id="lName" name="lName">
+    <br>
+    <!-- Age -->
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age">
+    <br>
+    <!-- Gender -->
+    <label>Gender:</label>
+    <input type="radio" id="male" name="gender" value="male"><label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female"><label for="female">Female</label>
+    <input type="radio" id="others" name="gender" value="others"><label for="others">Others</label>
+    <br>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="crudApp">
+    <output-path>$PROJECT_DIR$/out/artifacts/crudApp</output-path>
+    <root id="archive" name="crudApp.jar" />
+  </artifact>
+</component>
