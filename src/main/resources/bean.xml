@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Configure Student Bean -->
+    <bean id="student" class="xmlBased.model.Student" scope="prototype">
+        <property name="studId" value="10"/>
+        <property name="studName" value="Sam"/>
+    </bean>
+
+    <!-- Configure Department Bean -->
+    <bean id="department" class="xmlBased.model.Department" scope="prototype">
+        <property name="deptId" value="1"/>
+        <property name="deptName" value="Java"/>
+    </bean>
+
+    <!-- Configure Institute Bean -->
+    <bean id="institute" class="xmlBased.model.Institute">
+        <property name="student" ref="student"/>
+        <property name="department" ref="department"/>
+    </bean>
+</beans>
